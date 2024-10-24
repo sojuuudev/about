@@ -1,0 +1,692 @@
+:root {
+    --primary-color: #0a192f;
+    --secondary-color: #172a45;
+    --accent-color: #64ffda;
+    --text-color: #8892b0;
+    --heading-color: #ccd6f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.nav-scrolled {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 15px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: -100%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.logo:hover::after {
+    left: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--heading-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--heading-color);
+    font-size: 24px;
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1000px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-subtitle {
+    color: var(--accent-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-content h1 {
+    font-size: 72px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-description {
+    font-size: 20px;
+    max-width: 500px;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+.button-container {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 15px 30px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(100, 255, 218, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cv-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 15px 30px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+#about {
+    padding: 100px 0;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.profile-img-container {
+    position: relative;
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.profile-img-container::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: -15px;
+    bottom: -15px;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.profile-img-container:hover::after {
+    transform: translate(-5px, -5px);
+}
+
+.profile-img-container:hover .profile-img {
+    transform: translate(5px, 5px);
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.skill-item::before {
+    content: '▹';
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+#education {
+    background-color: var(--secondary-color);
+    padding: 100px 0;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-card {
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    border-left: 3px solid var(--accent-color);
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.education-card:hover {
+    transform: translateX(10px);
+    box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.education-year {
+    color: var(--accent-color);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.education-degree {
+    color: var(--heading-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.education-school {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#projects {
+    padding: 100px 0;
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.project-card {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 30px;
+    transition: all 0.5s ease;
+    transform: translateY(50px) rotateX(-10deg);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(100, 255, 218, 0.1),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-5px) rotateX(0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--heading-color);
+}
+
+.project-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.tech-item {
+    font-size: 12px;
+    color: var(--accent-color);
+    background-color: rgba(100, 255, 218, 0.1);
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    background-color: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.project-links a {
+    color: var(--heading-color);
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.project-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+#contact {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.contact-description {
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero-content h1 {
+        font-size: 50px;
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .profile-img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cv-button {
+        margin-top: 10px;
+    }
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+
+.fade-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease;
+}
+
+.fade-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 
+                                                                          
+                                                                          
+  _______   ______       __  __    __  __    __  __    __  __    __       
+ /       \ /      \     |  \|  \  |  \|  \  |  \|  \  |  \|  \  |  \      
+|  $$$$$$$|  $$$$$$\     \$$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ \$$    \ | $$  | $$    |  \| $$  | $$| $$  | $$| $$  | $$| $$  | $$      
+ _\$$$$$$\| $$__/ $$    | $$| $$__/ $$| $$__/ $$| $$__/ $$| $$__/ $$      
+|       $$ \$$    $$    | $$ \$$    $$ \$$    $$ \$$    $$ \$$    $$      
+ \$$$$$$$   \$$$$$$__   | $$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$       
+                  |  \__/ $$                                              
+                   \$$    $$                                              
+                    \$$$$$$                                               
+ */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
